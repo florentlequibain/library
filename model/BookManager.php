@@ -8,9 +8,23 @@ class BookManager {
     return $db;
   }
 
+  //ADD BOOK
+  public function addBook(Book $Book) {
+    $db = $this->getDb();
+    $request = $db->prepare("INSERT INTO books (title, author, releaseDate, type, summary, status, userCode)
+                             VALUES(:title, :author, :releaseDate , :type , :summary , :status , :userCode)");
+    $request->execute([
+      ":title"=> $Book->getTitle(),
+      ":author"=> $Book->getAuthor(),
+      ":releaseDate"=> $Book->getReleaseDate(),
+      ":type"=> $Book->getType(),
+      ":summary"=> $Book->getSummary(),
+      ":status"=> $Book->getStatus(),
+      ":userCode"=> $Book->getUserCode()
+    ]);
+  }
 
-
-  // GET ALL ACCOUNTS
+  // GET ALL BOOKS
   public function getBooks() {
 
     // CONNECT DB

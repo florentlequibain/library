@@ -117,7 +117,11 @@ textarea {
   background-color: darkred;
 }
 
-
+.tablesContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 
 

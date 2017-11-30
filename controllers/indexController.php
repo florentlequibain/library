@@ -2,12 +2,15 @@
 
 //LOAD CLASSES
 require_once("../model/BookManager.php");
+require_once("../model/UserManager.php");
 require_once("../entities/Book.php");
 require_once("../entities/User.php");
 require_once("../services/formChecker.php");
 
 $FormChecker = new formChecker();
 $BookManager = new BookManager();
+$UserManager = new UserManager();
+
 
 // ADD A BOOK
 
@@ -28,12 +31,21 @@ if(!empty($_POST["addBook"])) {
     $BookManager->addBook($book);
   }
 }
+var_dump($_POST["selectType"]);
+
+if(!empty($_POST["selectType"])) {
+  if($_POST == "SF"){
+    $books = $BookManager->getBooksByType("SF");
+  }
+}
 
 
 
 //SHOW ALL BOOKS -
 $books = $BookManager->getBooks();
 
+//SHOW ALL USERS-
+$users = $UserManager->getUsers();
 
 
 // INCLUDE VIEW

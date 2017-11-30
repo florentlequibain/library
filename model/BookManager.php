@@ -65,6 +65,8 @@ class BookManager {
     return $data;
   }
 
+  
+
 }
 
  ?>

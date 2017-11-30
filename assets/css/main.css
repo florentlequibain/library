@@ -123,6 +123,13 @@ textarea {
   flex-wrap: wrap;
 }
 
+.available{
+  background-color: green;
+}
+
+.borrowed{
+  background-color: orange;
+}
 
 
    /* ==========================================================================

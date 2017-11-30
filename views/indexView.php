@@ -114,12 +114,19 @@
     foreach ($books as $book) {
       ?>
 
+      <?php if($book->getStatus() == "available"){
+        $colorStatus = "available";
+      }else{
+        $colorStatus = "borrowed";
+      }
+      ?>
+
     <tr>
       <td><?php echo $book->getTitle(); ?></td>
       <td><?php echo $book->getAuthor(); ?></td>
       <td><?php echo $book->getReleaseDate(); ?></td>
       <td><?php echo $book->getType(); ?></td>
-      <td><?php echo $book->getStatus(); ?></td>
+      <td class=" <?php echo $colorStatus; ?>"><?php echo $book->getStatus(); ?></td>
       <td> A C T I O N S </td>
     </tr>
 

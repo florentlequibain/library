@@ -91,8 +91,8 @@
 
 </div>
 
-<article id="booksTable" class="col-8">
 <!-- TABLE WITH ALL BOOKS -->
+<article id="booksTable" class="col-8">
 <table class="table table-striped">
   <h3>Books Availables</h3>
 
@@ -138,8 +138,8 @@
 </table>
 </article>
 
+<!-- TABLE WITH ALL USERS -->
 <article id="usersTable" class="col-4">
-  <!-- TABLE WITH ALL USERS -->
   <table class="table table-striped">
 
     <h3>Users</h3>

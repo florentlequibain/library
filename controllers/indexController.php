@@ -31,18 +31,22 @@ if(!empty($_POST["addBook"])) {
     $BookManager->addBook($book);
   }
 }
-var_dump($_POST["selectType"]);
 
-if(!empty($_POST["selectType"])) {
-  if($_POST == "SF"){
-    $books = $BookManager->getBooksByType("SF");
+
+// SELECT BOOKS BY TYPE
+var_dump($_POST["selectTypeDropdown"]);
+
+
+if(!empty($_POST["selectTypeDropdown"]) && $_POST["selectTypeDropdown"] != "all" ) {
+    $books = $BookManager->getBooksByType($_POST["selectTypeDropdown"]);
+  }else{
+    $books = $BookManager->getBooks();
   }
-}
+
 
 
 
 //SHOW ALL BOOKS -
-$books = $BookManager->getBooks();
 
 //SHOW ALL USERS-
 $users = $UserManager->getUsers();

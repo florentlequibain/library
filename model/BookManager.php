@@ -52,7 +52,8 @@ class BookManager {
     $db = $this->getDb();
 
     // GET SF BOOKS IN DB
-    $request = $db->query("SELECT * FROM books WHERE type= $type");
+    $request = $db->prepare("SELECT * FROM books WHERE type= ?");
+    $request->execute([$type]);
 
     // ARRAY WITH ALL DB STOCKED IN VAR $DATA
     $data = $request->fetchAll(PDO::FETCH_ASSOC);
@@ -65,7 +66,6 @@ class BookManager {
     return $data;
   }
 
-  
 
 }
 

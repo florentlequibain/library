@@ -127,7 +127,12 @@
       <td><?php echo $book->getReleaseDate(); ?></td>
       <td><?php echo $book->getType(); ?></td>
       <td class=" <?php echo $colorStatus; ?>"><?php echo $book->getStatus(); ?></td>
-      <td> A C T I O N S </td>
+      <td>
+        <form class="" action="" method="post">
+          <input type="text" name="hiddenDeleteBook" value=" <?php echo $book->getIdBook() ?>">
+          <input class="btn btn-primary delete" type="submit" name="deleteBook" value="Delete Book">
+        </form>
+      </td>
     </tr>
 
     <?php
@@ -161,7 +166,7 @@
       <tr>
         <td><?php echo $user->getName(); ?></td>
         <td><?php echo $user->getUserCode(); ?></td>
-        <td>A C T I O N S</td>
+        <td>actions</td>
       </tr>
 
       <?php

@@ -51,7 +51,7 @@ class BookManager {
     // CONNECT DB
     $db = $this->getDb();
 
-    // GET SF BOOKS IN DB
+    // GET BOOK IN DB WHERE ARG = $TYPE
     $request = $db->prepare("SELECT * FROM books WHERE type= ?");
     $request->execute([$type]);
 
@@ -65,6 +65,31 @@ class BookManager {
     //RETURN RESULT $DATA = AN ARRAY WITH ALL OBJECTS "BOOK" OF THE WANTED TYPE
     return $data;
   }
+
+
+  // GET BOOKS BY ID
+  public function getBookById($id) {
+
+    // CONNECT DB
+    $db = $this->getDb();
+
+    // GET BOOK IN DB WHERE ID = $ID
+    $request = $db->prepare("SELECT * FROM books WHERE idBook= ?");
+    $request->execute([$id]);
+
+    // ARRAY WITH ONE DB LINE STOCKED IN VAR $DATA
+    $data = $request->fetch(PDO::FETCH_ASSOC);
+    $book = new Book($data);
+    return $data;
+  }
+
+  // DELETE BOOK
+public function deleteBook($idBook) {
+  $db = $this->getDb();
+
+  $request = $db->prepare("DELETE FROM books WHERE idBook= ?");
+  $request->execute([$idBook]);
+}
 
 
 }

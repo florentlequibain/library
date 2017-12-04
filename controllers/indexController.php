@@ -33,20 +33,28 @@ if(!empty($_POST["addBook"])) {
 }
 
 
-// SELECT BOOKS BY TYPE
-var_dump($_POST["selectTypeDropdown"]);
 
+// DELETE BOOK
+if(!empty($_POST["deleteBook"])) {
+
+  //VERIF
+  $erreur  = $FormChecker->isFormEmpty($_POST);
+  if(!empty($erreur)) {
+    echo $erreur;
+  }else{
+  $BookManager->deleteBook($_POST["hiddenDeleteBook"]);
+  }
+}
+
+// SELECT BOOKS BY TYPE
 
 if(!empty($_POST["selectTypeDropdown"]) && $_POST["selectTypeDropdown"] != "all" ) {
-    $books = $BookManager->getBooksByType($_POST["selectTypeDropdown"]);
-  }else{
-    $books = $BookManager->getBooks();
-  }
+  $books = $BookManager->getBooksByType($_POST["selectTypeDropdown"]);
+}else{
+  //SHOW ALL BOOKS -
+  $books = $BookManager->getBooks();
+}
 
-
-
-
-//SHOW ALL BOOKS -
 
 //SHOW ALL USERS-
 $users = $UserManager->getUsers();

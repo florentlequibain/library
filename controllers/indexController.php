@@ -33,6 +33,25 @@ if(!empty($_POST["addBook"])) {
 }
 
 
+// UPDATE A BOOK
+
+//CHECK IF USER UPDATE A BOOK
+if(!empty($_POST["updateBook"])) {
+
+  //CALL FORM CHECKER
+  $erreur  = $FormChecker->isFormEmpty($_POST);
+  if(!empty($erreur)) {
+    echo $erreur;
+  }
+  else{
+    //IF OK CREATE NEW BOOK OBJECT
+    $book = new Book($_POST);
+    //UPDATE OBJECT TO DB
+    $BookManager->updateBook($book);
+  }
+}
+
+
 
 // DELETE BOOK
 if(!empty($_POST["deleteBook"])) {

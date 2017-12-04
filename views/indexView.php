@@ -8,9 +8,9 @@
 
  <!-- DROPDOWN BUTTON -->
   <button type="button" class="btn btn-primary button_show_projets"
-          onclick="displayYesNo()">Add new Book</button>
+          onclick="displayYesNo1()">Add new Book</button>
 
-     <div id="YesNo" class="container">
+     <div id="YesNo1" class="container">
 
        <form action="" method="post">
 
@@ -128,10 +128,81 @@
       <td><?php echo $book->getType(); ?></td>
       <td class=" <?php echo $colorStatus; ?>"><?php echo $book->getStatus(); ?></td>
       <td>
+
+        <!-- DELETE -->
         <form class="" action="" method="post">
-          <input type="text" name="hiddenDeleteBook" value=" <?php echo $book->getIdBook() ?>">
+          <input type="hidden" name="hiddenDeleteBook" value=" <?php echo $book->getIdBook() ?>">
           <input class="btn btn-primary delete" type="submit" name="deleteBook" value="Delete Book">
         </form>
+
+        <!-- UPDATE -->
+         <div class="container_form">
+
+        <!-- DROPDOWN BUTTON -->
+         <button type="button" class="btn btn-primary button_show_projets"
+                 onclick="displayYesNo2()">UPDATE</button>
+
+            <div id="YesNo2" class="container">
+
+              <form action="" method="post">
+
+                <div class="form-group row">
+                  <label for="inputName" class="col-sm-2 col-form-label">Title</label>
+                  <div class="col-sm-10">
+                    <input name="newTitle" type="text" class="form-control" value="<?php echo $book->getTitle() ?>">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="inputAmount" class="col-sm-2 col-form-label">Author</label>
+                  <div class="col-sm-10">
+                    <input name="newAuthor" type="text" class="form-control" value="<?php echo $book->getAuthor() ?>">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="inputAmount" class="col-sm-2 col-form-label">Release Date</label>
+                  <div class="col-sm-10">
+                    <input name="newReleaseDate" type="date" class="form-control" value="<?php echo $book->getReleaseDate() ?>">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="inputAmount" class="col-sm-2 col-form-label">Type</label>
+                  <div class="col-sm-10">
+                    <input name="newType" type="text" class="form-control" value="<?php echo $book->getType() ?>">
+                  </div>
+                </div>
+
+               <div class="form-group row">
+                 <label for="inputAmount" class="col-sm-2 col-form-label">Status</label>
+                 <div class="col-sm-10">
+                   <input name="newStatus" type="text" class="form-control" value="<?php echo $book->getStatus() ?>">
+                 </div>
+               </div>
+
+               <div class="form-group row">
+                 <label for="inputAmount" class="col-sm-2 col-form-label">User Code</label>
+                 <div class="col-sm-10">
+                   <input name="newUserCode" type="number" class="form-control" value="1">
+                 </div>
+               </div>
+
+               <div class="form-group row">
+                 <label for="comment">Summary:</label>
+                 <textarea name="newSummary" class="form-control" rows="5" value="<?php echo $book->getSummary() ?>"></textarea>
+               </div>
+
+                <input class="btn btn-primary" type="submit" name="updateBook" value="Update">
+              </form>
+
+            </div>
+
+          </div>
+
+
+          <!-- SEE -->
+          <a href="bookDetailController.php?id= <?php echo $book->getIdBook() ?>">SEE BOOK</a>
       </td>
     </tr>
 

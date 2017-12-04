@@ -83,6 +83,32 @@ class BookManager {
     return $data;
   }
 
+ // UPDATE A BOOK
+ public function updateBook(){
+
+    $request = $db->prepare("UPDATE books SET title = :newTitle,
+                                              author = :newAuthor,
+                                              releaseDate = :newReleaseDate,
+                                              type = :newType,
+                                              sumamry = :newSummary,
+                                              status = :newStatus,
+                                              userCode = :newUserCode ");
+
+    $request->execute([	'newTitle' => $_POST["newTitle"],
+                        'newAuthor' => $_POST["newAuthor"],
+                        'newReleaseDate' => $_POST["newReleaseDate"],
+                        'newType' => $_POST["newType"],
+                        'newSummary' => $_POST["newSummary"],
+                        'newStatus' => $_POST["newStatus"],
+                        'newUserCode' => $_POST["newUserCode"], ]);
+
+    $data = $request->fetch(PDO::FETCH_ASSOC);
+    $book = new Book($data);
+    return $data;
+  }
+
+
+
   // DELETE BOOK
 public function deleteBook($idBook) {
   $db = $this->getDb();

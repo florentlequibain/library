@@ -8,9 +8,9 @@
 
  <!-- DROPDOWN BUTTON -->
   <button type="button" class="btn btn-primary button_show_projets"
-          onclick="displayYesNo1()">Add new Book</button>
+          onclick="displayYesNo()">Add new Book</button>
 
-     <div id="YesNo1" class="container">
+     <div id="YesNo" class="container">
 
        <form action="" method="post">
 
@@ -142,7 +142,7 @@
          <button type="button" class="btn btn-primary button_show_projets"
                  onclick="displayYesNo2()">UPDATE</button>
 
-            <div id="YesNo2" class="container">
+            <div id="YesNo" class="container">
 
               <form action="" method="post">
 

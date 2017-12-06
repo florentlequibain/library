@@ -74,14 +74,19 @@ class BookManager {
     $db = $this->getDb();
 
     // GET BOOK IN DB WHERE ID = $ID
-    $request = $db->prepare("SELECT * FROM books WHERE idBook= ?");
+    $request = $db->prepare("SELECT b.* , u.*
+                             FROM books b
+                             LEFT JOIN users u
+                             ON b.userCode = u.userCode
+                             WHERE idBook= ?");
     $request->execute([$id]);
 
     // ARRAY WITH ONE DB LINE STOCKED IN VAR $DATA
     $data = $request->fetch(PDO::FETCH_ASSOC);
-    $book = new Book($data);
     return $data;
+
   }
+
 
  // UPDATE A BOOK
  public function updateBook(){
@@ -109,6 +114,7 @@ class BookManager {
 
 
 
+
   // DELETE BOOK
 public function deleteBook($idBook) {
   $db = $this->getDb();
@@ -116,6 +122,35 @@ public function deleteBook($idBook) {
   $request = $db->prepare("DELETE FROM books WHERE idBook= ?");
   $request->execute([$idBook]);
 }
+
+
+//  // GET USER WITH BORROWED BOOK
+// public function getUserBorrowBook($idBook) {
+//     $db = $this->getDb();
+//
+//     $request = $db->prepare("SELECT u.name name
+//                              FROM users u
+//                              INNER JOIN books b
+//                              ON b.userCode = u.userCode
+//                              WHERE b.idBook = ?");
+//     $request->execute([$idBook]);
+//     $data = $request->fetch(PDO::FETCH_ASSOC);
+//     $book = new Book($data);
+//     return $data;
+// }
+
+
+// UPDATE USER CODE FROM BOOK
+public function updateBookUserCode(){
+
+   $request = $db->prepare("UPDATE books SET userCode = :newUserCode ");
+
+   $request->execute(['newUserCode' => $_POST["updateUserCode"], ]);
+
+   $data = $request->fetch(PDO::FETCH_ASSOC);
+   $book = new Book($data);
+   return $data;
+ }
 
 
 }

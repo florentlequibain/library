@@ -1,5 +1,5 @@
 function displayYesNo() {
-    var x = document.getElementById("YesNo1");
+    var x = document.getElementById("YesNo");
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {
